@@ -28,6 +28,8 @@
 *.mdb
 *.opendb
 *.VC.db
+.vsconfig
+.vs/
 
 # ====================
 # JetBrains Rider
