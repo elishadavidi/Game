@@ -79,8 +79,9 @@ namespace BecomingLegend.Editor
                 }
 
                 AddEntry(StatType.Strength, 3f);
-                AddEntry(StatType.Swiftness, 3f);
-                AddEntry(StatType.Vitality, 3f);
+                AddEntry(StatType.Speed, 3f);
+                AddEntry(StatType.Stamina, 3f);
+                AddEntry(StatType.Core, 3f);
             }
             so.ApplyModifiedProperties();
 

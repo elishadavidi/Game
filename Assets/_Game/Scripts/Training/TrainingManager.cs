@@ -1,4 +1,4 @@
-using BecomingLegend;
+using BecomingLegend.Actors;
 using BecomingLegend.Stats;
 using UnityEngine;
 
@@ -6,22 +6,33 @@ namespace BecomingLegend.Training
 {
     public class TrainingManager : MonoBehaviour
     {
-        [System.Serializable]
-        public struct TrainingMapping
+        [SerializeField] private ActivityDefinition[] activities;
+
+        public void LogActivity(ActivityDefinition activity, float intensity, PlayerActor player)
         {
-            public StatType primaryStat;
-            public float statGain;
-            public float xpGain;
+            if (activity == null || player == null) return;
+
+            float statGain = activity.BaseStatGain * intensity * activity.IntensityMultiplier;
+            float current = player.Stats.GetBase(activity.PrimaryStat);
+            player.Stats.SetBase(activity.PrimaryStat, current + statGain);
+
+            int xpGain = Mathf.RoundToInt(activity.BaseXPGain * intensity);
+            player.AddXP(xpGain);
+
+            Debug.Log($"[Training] {activity.ActivityName}: {activity.PrimaryStat} +{statGain:F1}, XP +{xpGain}");
         }
 
-        [SerializeField] private TrainingMapping[] mappings;
-
-        public void LogActivity(string activityName, float intensity)
+        public void LogActivity(string activityName, float intensity, PlayerActor player)
         {
-            foreach (var mapping in mappings)
+            foreach (var a in activities)
             {
-                float gain = mapping.statGain * intensity;
+                if (a.ActivityName == activityName)
+                {
+                    LogActivity(a, intensity, player);
+                    return;
+                }
             }
+            Debug.LogWarning($"[Training] No activity named '{activityName}' found.");
         }
     }
 }

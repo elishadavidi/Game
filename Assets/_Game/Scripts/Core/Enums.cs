@@ -3,8 +3,9 @@ namespace BecomingLegend
     public enum StatType
     {
         Strength,
-        Swiftness,
-        Vitality
+        Speed,
+        Stamina,
+        Core
     }
 
     public enum ClassType

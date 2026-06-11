@@ -12,10 +12,10 @@ namespace BecomingLegend.Editor
         {
             ("Push-ups",       StatType.Strength,  2f,   18f, 1f),
             ("Pull-ups",       StatType.Strength,  2.5f, 20f, 1.2f),
-            ("Running",        StatType.Vitality,  2f,   15f, 1.5f),
-            ("Squats",         StatType.Vitality,  1.5f, 12f, 1f),
-            ("Jumping Jacks",  StatType.Swiftness, 1.5f, 12f, 0.8f),
-            ("Stretching",     StatType.Swiftness, 1f,   8f,  0.7f),
+            ("Running",        StatType.Speed,     2f,   15f, 1.5f),
+            ("Squats",         StatType.Stamina,   1.5f, 12f, 1f),
+            ("Jumping Jacks",  StatType.Speed,     1.5f, 12f, 0.8f),
+            ("Stretching",     StatType.Core,      1f,   8f,  0.7f),
         };
 
         [MenuItem("Becoming Legend/Create Default Activity Definitions")]

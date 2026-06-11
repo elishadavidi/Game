@@ -9,8 +9,7 @@ namespace BecomingLegend.Combat
     {
         public DamageResult CalculateDamage(Actor attacker, IDamageable defender)
         {
-            float strength = attacker.Stats.GetStat(StatType.Strength);
-            float baseDamage = strength * GameConstants.BaseDamagePerStrength;
+            float baseDamage = attacker.AttackDamage;
             bool isCrit = Random.value < GameConstants.BaseCritChance;
             float finalDamage = isCrit ? baseDamage * GameConstants.CritMultiplier : baseDamage;
 

@@ -34,6 +34,7 @@ namespace BecomingLegend.Core
         private void Initialize()
         {
             if (combatManager == null) combatManager = GetComponent<CombatManager>();
+            if (combatManager == null) combatManager = gameObject.AddComponent<CombatManager>();
             if (questManager == null) questManager = GetComponent<QuestManager>();
             if (trainingManager == null) trainingManager = GetComponent<TrainingManager>();
             CurrentState = GameState.MainMenu;
