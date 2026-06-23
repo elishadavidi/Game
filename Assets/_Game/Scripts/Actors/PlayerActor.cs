@@ -1,11 +1,12 @@
 using BecomingLegend;
 using BecomingLegend.Combat;
 using BecomingLegend.Core;
+using BecomingLegend.Events;
 using UnityEngine;
 
 namespace BecomingLegend.Actors
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
     public class PlayerActor : Actor
     {
         [Header("Player")]
@@ -15,13 +16,17 @@ namespace BecomingLegend.Actors
         [SerializeField] private int level = 1;
         [SerializeField] private int currentXP;
         [SerializeField] private int xpToNextLevel = GameConstants.BaseXPToLevel;
+        [SerializeField] private float attackPointDistance = 0.75f;
 
         private Rigidbody2D rb;
 
         public static PlayerActor Instance { get; private set; }
+        public float AttackPointDistance => attackPointDistance;
 
         public ClassType ClassType => classType;
         public int Level => level;
+        public int CurrentXP => currentXP;
+        public int XPToNextLevel => xpToNextLevel;
         public float MoveSpeed => MoveSpeedDerived;
 
         private float lastAttackTime;
@@ -31,7 +36,8 @@ namespace BecomingLegend.Actors
             base.Awake();
             if (Instance == null) Instance = this;
             rb = GetComponent<Rigidbody2D>();
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.gravityScale = 0;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
         protected override void OnDestroy()
@@ -43,8 +49,11 @@ namespace BecomingLegend.Actors
 
         private void OnDrawGizmosSelected()
         {
+            Vector3 pos = transform.position;
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+            Gizmos.DrawWireSphere(pos, attackRange);
+            Gizmos.color = new Color(1, 0, 0, 0.15f);
+            Gizmos.DrawSphere(pos, attackRange);
         }
 
         public override void TakeDamage(DamageResult damage)
@@ -60,18 +69,35 @@ namespace BecomingLegend.Actors
             enabled = false;
         }
 
-        public void Attack()
+        public void Attack(Vector2 direction)
         {
-            if (Time.time - lastAttackTime < AttackCooldown) return;
+            if (Time.time - lastAttackTime < AttackCooldown)
+                return;
+
+            direction = direction.normalized;
+
+            if (direction.sqrMagnitude < 0.01f)
+                direction = Vector2.down;
+
             lastAttackTime = Time.time;
 
             Animator.SetTrigger("Attacking");
 
-            var hit = Physics2D.OverlapCircle(transform.position, attackRange, enemyLayers);
-            if (hit != null && hit.TryGetComponent<EnemyActor>(out var enemy) && !enemy.IsDead)
+            Vector2 pos = (Vector2)transform.position + direction * attackPointDistance;
+
+            Collider2D[] hits = Physics2D.OverlapCircleAll(
+                pos,
+                attackRange,
+                enemyLayers
+            );
+
+            foreach (var hit in hits)
             {
-                var result = GameManager.Instance.Combat.CalculateDamage(this, enemy);
-                enemy.TakeDamage(result);
+                if (hit.TryGetComponent<EnemyActor>(out var enemy) && !enemy.IsDead)
+                {
+                    var result = GameManager.Instance.Combat.CalculateDamage(this, enemy);
+                    enemy.TakeDamage(result);
+                }
             }
         }
 
@@ -95,6 +121,7 @@ namespace BecomingLegend.Actors
             Stats.SetBase(StatType.Stamina, Stats.GetBase(StatType.Stamina) + 1f);
             Stats.SetBase(StatType.Core, Stats.GetBase(StatType.Core) + 1f);
             Stats.EndUpdate();
+            EventBus.Publish(new LevelUpEvent(this, level));
         }
     }
 }

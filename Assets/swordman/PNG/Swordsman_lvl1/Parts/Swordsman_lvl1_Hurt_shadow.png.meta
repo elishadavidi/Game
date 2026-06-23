@@ -62,6 +62,24 @@ TextureImporter:
   - first:
       213: 576120685749089683
     second: Swordsman_lvl1_Hurt_shadow_19
+  - first:
+      213: -3196267540678668016
+    second: Swordsman_lvl1_Hurt_shadow_20
+  - first:
+      213: -685859228437879353
+    second: Swordsman_lvl1_Hurt_shadow_24
+  - first:
+      213: -5020099400047599409
+    second: Swordsman_lvl1_Hurt_shadow_25
+  - first:
+      213: -7291185358157767004
+    second: Swordsman_lvl1_Hurt_shadow_26
+  - first:
+      213: -6395286015414207315
+    second: Swordsman_lvl1_Hurt_shadow_27
+  - first:
+      213: -3012864757492978617
+    second: Swordsman_lvl1_Hurt_shadow_28
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -160,12 +178,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 208
-        width: 17
-        height: 9
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -182,12 +200,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 208
-        width: 17
-        height: 9
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -204,12 +222,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 208
-        width: 17
-        height: 9
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -226,12 +244,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_3
       rect:
         serializedVersion: 2
-        x: 215
-        y: 208
-        width: 17
-        height: 9
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -248,12 +266,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_4
       rect:
         serializedVersion: 2
-        x: 279
-        y: 208
-        width: 17
-        height: 9
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -270,12 +288,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_5
       rect:
         serializedVersion: 2
-        x: 23
-        y: 144
-        width: 17
-        height: 9
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -292,12 +310,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_6
       rect:
         serializedVersion: 2
-        x: 87
-        y: 144
-        width: 17
-        height: 9
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -314,12 +332,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_7
       rect:
         serializedVersion: 2
-        x: 151
-        y: 144
-        width: 17
-        height: 9
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -336,12 +354,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_8
       rect:
         serializedVersion: 2
-        x: 215
-        y: 144
-        width: 17
-        height: 9
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -358,12 +376,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_9
       rect:
         serializedVersion: 2
-        x: 279
-        y: 144
-        width: 17
-        height: 9
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -380,12 +398,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_10
       rect:
         serializedVersion: 2
-        x: 23
-        y: 81
-        width: 17
-        height: 9
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -402,12 +420,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_11
       rect:
         serializedVersion: 2
-        x: 87
-        y: 80
-        width: 17
-        height: 9
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -424,12 +442,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_12
       rect:
         serializedVersion: 2
-        x: 151
-        y: 80
-        width: 17
-        height: 9
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -446,12 +464,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_13
       rect:
         serializedVersion: 2
-        x: 215
-        y: 80
-        width: 17
-        height: 9
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -468,12 +486,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_14
       rect:
         serializedVersion: 2
-        x: 279
-        y: 80
-        width: 17
-        height: 9
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -490,12 +508,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_15
       rect:
         serializedVersion: 2
-        x: 23
-        y: 16
-        width: 17
-        height: 9
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -512,12 +530,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_16
       rect:
         serializedVersion: 2
-        x: 87
-        y: 16
-        width: 17
-        height: 9
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -534,12 +552,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_17
       rect:
         serializedVersion: 2
-        x: 151
-        y: 16
-        width: 17
-        height: 9
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -556,12 +574,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_18
       rect:
         serializedVersion: 2
-        x: 215
-        y: 16
-        width: 17
-        height: 9
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -578,12 +596,12 @@ TextureImporter:
       name: Swordsman_lvl1_Hurt_shadow_19
       rect:
         serializedVersion: 2
-        x: 279
-        y: 16
-        width: 17
-        height: 9
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -623,6 +641,12 @@ TextureImporter:
       Swordsman_lvl1_Hurt_shadow_18: -7789231107589583769
       Swordsman_lvl1_Hurt_shadow_19: 576120685749089683
       Swordsman_lvl1_Hurt_shadow_2: -6272602095630546354
+      Swordsman_lvl1_Hurt_shadow_20: -3196267540678668016
+      Swordsman_lvl1_Hurt_shadow_24: -685859228437879353
+      Swordsman_lvl1_Hurt_shadow_25: -5020099400047599409
+      Swordsman_lvl1_Hurt_shadow_26: -7291185358157767004
+      Swordsman_lvl1_Hurt_shadow_27: -6395286015414207315
+      Swordsman_lvl1_Hurt_shadow_28: -3012864757492978617
       Swordsman_lvl1_Hurt_shadow_3: 4251736538361335653
       Swordsman_lvl1_Hurt_shadow_4: -760608913955651881
       Swordsman_lvl1_Hurt_shadow_5: -2603555323224101682

@@ -1,15 +1,19 @@
 using BecomingLegend;
 using BecomingLegend.Combat;
+using BecomingLegend.Core;
+using BecomingLegend.Events;
 using UnityEngine;
 
 namespace BecomingLegend.Actors
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
     public class EnemyActor : Actor
     {
         [Header("Combat")]
         [SerializeField] private float aggroRange = 8f;
         [SerializeField] private float attackRange = 1.5f;
+        [SerializeField] private float attackPointDistance = 0.6f;
+        [SerializeField] private LayerMask playerLayers = 1;
         [SerializeField] private int xpReward = 10;
 
         [Header("Patrol")]
@@ -23,8 +27,6 @@ namespace BecomingLegend.Actors
         private Transform target;
         private float lastAttackTime;
         private PlayerActor playerTarget;
-        private Color originalColor;
-        private float flashTimer;
         private float deathTimer;
 
         private Rigidbody2D rb;
@@ -40,10 +42,10 @@ namespace BecomingLegend.Actors
         protected override void Awake()
         {
             base.Awake();
-            originalColor = SpriteRenderer != null ? SpriteRenderer.color : Color.white;
             rb = GetComponent<Rigidbody2D>();
-            rb.bodyType = RigidbodyType2D.Kinematic;
             rb.gravityScale = 0;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
             patrolBounds.center = transform.position;
             SetupCorners();
         }
@@ -59,12 +61,6 @@ namespace BecomingLegend.Actors
             }
 
             if (IsDead) return;
-            if (SpriteRenderer != null && flashTimer > 0f)
-            {
-                flashTimer -= Time.deltaTime;
-                if (flashTimer <= 0f)
-                    SpriteRenderer.color = originalColor;
-            }
 
             if (playerTarget != null && (playerTarget.IsDead || Vector2.Distance(transform.position, playerTarget.transform.position) > aggroRange * 1.5f))
             {
@@ -92,9 +88,6 @@ namespace BecomingLegend.Actors
                 case AIState.Wait: UpdateWait(); break;
             }
 
-            transform.position += (Vector3)moveDir * MoveSpeedDerived * Time.deltaTime;
-            rb.position = transform.position;
-
             if (moveDir.magnitude > 0.01f)
             {
                 Animator.SetFloat("MoveX", moveDir.x);
@@ -102,6 +95,17 @@ namespace BecomingLegend.Actors
             }
             float speed = aiState == AIState.Chase ? 1f : aiState == AIState.Patrol ? 0.3f : 0f;
             Animator.SetFloat("Speed", speed);
+        }
+
+        private void FixedUpdate()
+        {
+            if (dying || IsDead)
+            {
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
+            rb.linearVelocity = moveDir * MoveSpeedDerived;
         }
 
         private void UpdatePatrol()
@@ -144,10 +148,10 @@ namespace BecomingLegend.Actors
             if (target == null) return;
             float dist = Vector2.Distance(transform.position, target.position);
 
-            if (dist <= attackRange && CanAttack())
+            if (dist <= attackRange * 0.6f && CanAttack())
             {
                 AttackTarget();
-                moveDir = Vector2.zero;
+                moveDir = ((Vector2)target.position - (Vector2)transform.position).normalized * 0.3f;
             }
             else
             {
@@ -163,10 +167,22 @@ namespace BecomingLegend.Actors
             lastAttackTime = Time.time;
             Animator.SetTrigger("Attacking");
 
-            if (target.TryGetComponent<IDamageable>(out var damageable))
+            Vector2 dir = ((Vector2)target.position - (Vector2)transform.position).normalized;
+            Vector2 pos = (Vector2)transform.position + dir * attackPointDistance;
+            var hit = Physics2D.OverlapCircle(
+                pos,
+                attackRange * 0.8f,
+                playerLayers);
+
+            if (hit != null &&
+                hit.TryGetComponent<PlayerActor>(out var player) &&
+                !player.IsDead)
             {
-                var result = new DamageResult(AttackDamage, DamageType.Physical, false, this, damageable);
-                damageable.TakeDamage(result);
+                var result = GameManager.Instance.Combat.CalculateDamage(
+                    this,
+                    player);
+
+                player.TakeDamage(result);
             }
         }
 
@@ -182,19 +198,21 @@ namespace BecomingLegend.Actors
                 target = player.transform;
                 aiState = AIState.Chase;
             }
-            if (SpriteRenderer != null)
-            {
-                SpriteRenderer.color = Color.white;
-                flashTimer = 0.15f;
-            }
         }
 
         public override void Die()
         {
+            if (dying)
+                return;
+
             Animator.SetTrigger("Dead");
+
             moveDir = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
+
             dying = true;
             deathTimer = 1f;
+
             if (playerTarget != null)
                 playerTarget.AddXP(xpReward);
         }
@@ -234,6 +252,35 @@ namespace BecomingLegend.Actors
             Gizmos.DrawWireSphere(transform.position, aggroRange);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackRange);
+
+            if (target != null)
+            {
+                Vector2 dir = ((Vector2)target.position - (Vector2)transform.position).normalized;
+                Vector3 p = (Vector2)transform.position + dir * attackPointDistance;
+                Gizmos.color = new Color(1, 0.5f, 0);
+                Gizmos.DrawWireSphere(p, attackRange * 0.5f);
+                Gizmos.color = new Color(1, 0.5f, 0, 0.12f);
+                Gizmos.DrawSphere(p, attackRange * 0.5f);
+            }
+        }
+
+        public void ApplyPreset(string name, int str, int spd, int sta, int core, int xp, float aggro, float atkRange, Color tint)
+        {
+            actorName = name;
+            xpReward = xp;
+            aggroRange = aggro;
+            attackRange = atkRange;
+            if (SpriteRenderer != null)
+            {
+                SpriteRenderer.color = tint;
+                OriginalColor = tint;
+            }
+            Stats.BeginUpdate();
+            Stats.SetBase(StatType.Strength, str);
+            Stats.SetBase(StatType.Speed, spd);
+            Stats.SetBase(StatType.Stamina, sta);
+            Stats.SetBase(StatType.Core, core);
+            Stats.EndUpdate();
         }
 
         private void SetupCorners()

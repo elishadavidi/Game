@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9031823564081909876}
   - component: {fileID: 2872425690274404796}
+  - component: {fileID: 3840370252538185301}
   - component: {fileID: 1643684201264542159}
   - component: {fileID: 5469890180815936027}
   - component: {fileID: 7609904069839031963}
-  - component: {fileID: 3840370252538185301}
+  - component: {fileID: 6936707893060850425}
   m_Layer: 0
   m_Name: Boar
   m_TagString: Untagged
@@ -63,6 +64,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &3840370252538185301
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362573827914857207}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!212 &1643684201264542159
 SpriteRenderer:
   serializedVersion: 2
@@ -118,7 +156,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.23, y: 0.25}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -170,19 +208,20 @@ MonoBehaviour:
     - type: 3
       value: 3
   health: 0
-  maxHealth: 50
-  maxMP: 20
-  maxStamina: 30
+  mp: 0
+  stamina: 0
   aggroRange: 8
   attackRange: 1.5
+  attackPointDistance: 0.6
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 1
   xpReward: 10
   patrolBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5, y: 5, z: 0}
-  walkSpeed: 2
-  runSpeed: 5
   arrivalThreshold: 0.5
---- !u!70 &3840370252538185301
+--- !u!70 &6936707893060850425
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,5 +256,5 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.23, y: 0.25}
+  m_Size: {x: 0.32, y: 0.32}
   m_Direction: 0

@@ -2,6 +2,7 @@ using BecomingLegend;
 using BecomingLegend.Combat;
 using BecomingLegend.Quests;
 using BecomingLegend.Training;
+using BecomingLegend.UI;
 using UnityEngine;
 
 namespace BecomingLegend.Core
@@ -36,7 +37,9 @@ namespace BecomingLegend.Core
             if (combatManager == null) combatManager = GetComponent<CombatManager>();
             if (combatManager == null) combatManager = gameObject.AddComponent<CombatManager>();
             if (questManager == null) questManager = GetComponent<QuestManager>();
-            if (trainingManager == null) trainingManager = GetComponent<TrainingManager>();
+            if (trainingManager == null) trainingManager = gameObject.AddComponent<TrainingManager>();
+            var fb = GetComponent<CombatFeedback>();
+            if (fb == null) gameObject.AddComponent<CombatFeedback>();
             CurrentState = GameState.MainMenu;
         }
 

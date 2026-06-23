@@ -40,8 +40,14 @@ namespace BecomingLegend.Editor
             collider.isTrigger = false;
             playerObj.tag = "Player";
             playerObj.layer = LayerMask.NameToLayer("Default");
-
             playerObj.AddComponent<PlayerController>();
+
+            CreatePlayerPart(playerObj, "Shadow", 0);
+            CreatePlayerPart(playerObj, "WeaponBack", 1);
+            CreatePlayerPart(playerObj, "Body", 2);
+            CreatePlayerPart(playerObj, "Head", 3);
+            CreatePlayerPart(playerObj, "WeaponFront", 4);
+            CreatePlayerPart(playerObj, "SwingEffect", 5);
 
             var eventSystem = new GameObject("EventSystem");
             eventSystem.AddComponent<UnityEngine.EventSystems.EventSystem>();
@@ -52,6 +58,16 @@ namespace BecomingLegend.Editor
 
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
             Debug.Log("Initial scene setup complete.");
+        }
+
+        private static GameObject CreatePlayerPart(GameObject parent, string name, int order)
+        {
+            var child = new GameObject(name);
+            child.transform.SetParent(parent.transform, false);
+            child.transform.localPosition = Vector3.zero;
+            var sr = child.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = order;
+            return child;
         }
 
         [MenuItem("Becoming Legend/Create Enemy")]

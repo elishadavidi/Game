@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7675139807529895381}
   - component: {fileID: 2923337204787154542}
+  - component: {fileID: 9216031349683548022}
   - component: {fileID: 8387919850906299101}
   - component: {fileID: 7727403487514187120}
   - component: {fileID: 1030207064806110603}
-  - component: {fileID: 9216031349683548022}
+  - component: {fileID: 8213755201494407863}
   m_Layer: 0
   m_Name: Hare
   m_TagString: Untagged
@@ -63,6 +64,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &9216031349683548022
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986046428581399213}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!212 &8387919850906299101
 SpriteRenderer:
   serializedVersion: 2
@@ -170,19 +208,20 @@ MonoBehaviour:
     - type: 3
       value: 3
   health: 0
-  maxHealth: 50
-  maxMP: 20
-  maxStamina: 30
+  mp: 0
+  stamina: 0
   aggroRange: 8
   attackRange: 1.5
+  attackPointDistance: 0.6
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 1
   xpReward: 10
   patrolBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5, y: 5, z: 0}
-  walkSpeed: 2
-  runSpeed: 5
   arrivalThreshold: 0.5
---- !u!70 &9216031349683548022
+--- !u!70 &8213755201494407863
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

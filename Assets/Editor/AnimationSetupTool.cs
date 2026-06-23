@@ -4,23 +4,165 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using System.Globalization;
 
 public static class AnimationSetupTool
 {
-    private const string PngRoots = "Assets/swordman/PNG";
-    private const string AnimationOut = "Assets/_Game/Animations/Player";
+    private const string PartsRoot = "Assets/swordman/PNG/Swordsman_lvl1";
+    private const string AnimOut = "Assets/_Game/Animations/Player";
     private const string ControllerPath = "Assets/_Game/Animations/Player/Player.controller";
 
     private static readonly string[] Directions = { "front", "side_left", "side_right", "back" };
+    private static readonly string[] States = { "Idle", "Walk", "Run", "Attack", "Hurt", "Death" };
+
+    private static readonly Dictionary<string, string> PartToPath = new()
+    {
+        {"shadow", "Shadow"},
+        {"body", "Body"},
+        {"head", "Head"},
+        {"sword", "WeaponFront"},
+        {"sword_back", "WeaponBack"},
+        {"swing", "SwingEffect"},
+    };
+
+    private static readonly Dictionary<string, int[]> PartDirectionRowMap = new()
+    {
+        {"shadow", new[] {0, 1, 2, 3}},
+        {"body", new[] {0, 1, 2, 3}},
+        {"head", new[] {0, 1, 2, 3}},
+        {"sword", new[] {0, -1, 1, -1}},
+        {"sword_back", new[] {-1, 0, -1, 1}},
+        {"swing", new[] {0, 1, 2, 3}},
+    };
 
     [MenuItem("Tools/Player Animation Setup")]
     public static void SetupPlayerAnimations()
     {
-        Directory.CreateDirectory(AnimationOut);
+        Directory.CreateDirectory(AnimOut);
+        CleanOldClips();
 
-        // Clean up old clips
-        string fullOut = Path.Combine(Application.dataPath, AnimationOut.Substring("Assets/".Length));
+        var pngFiles = FindPartPngs();
+        if (pngFiles.Count == 0)
+        {
+            EditorUtility.DisplayDialog("Error", $"No Part PNGs found in {PartsRoot}/Parts/", "OK");
+            return;
+        }
+
+        var clipsByStateDir = CreateClips(pngFiles);
+        if (clipsByStateDir.Count == 0)
+        {
+            EditorUtility.DisplayDialog("Error", "No clips created. Check Console.", "OK");
+            return;
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        BuildController(clipsByStateDir);
+        SetupPlayerHierarchy();
+
+        EditorUtility.DisplayDialog("Done",
+            $"Modular player animation ready! Total: {clipsByStateDir.Sum(kvp => kvp.Value.Count)} clips " +
+            $"across {clipsByStateDir.Count} states.\n" +
+            "Run Tools/Normalize Part Slicing if layers are misaligned.", "OK");
+    }
+
+    private static Dictionary<string, Dictionary<string, AnimationClip>> CreateClips(List<string> pngFiles)
+    {
+        var clipsByStateDir = new Dictionary<string, Dictionary<string, AnimationClip>>();
+
+        foreach (var targetState in States)
+        {
+            var partsByPart = new Dictionary<string, List<Sprite>[]>();
+
+            foreach (var pngPath in pngFiles)
+            {
+                string name = Path.GetFileNameWithoutExtension(pngPath);
+                if (!TryParsePartName(name, out string _, out string state, out string part))
+                    continue;
+                if (!string.Equals(state, targetState, System.StringComparison.OrdinalIgnoreCase))
+                    continue;
+                if (!PartToPath.ContainsKey(part))
+                    continue;
+
+                var allAssets = AssetDatabase.LoadAllAssetsAtPath(pngPath);
+                var sprites = allAssets.OfType<Sprite>().ToArray();
+                if (sprites.Length == 0) continue;
+
+                var rows = SplitIntoRows(sprites);
+                partsByPart[part] = rows;
+            }
+
+            if (partsByPart.Count == 0) continue;
+
+            for (int d = 0; d < 4; d++)
+            {
+                var dirSprites = new Dictionary<string, List<Sprite>>();
+
+                foreach (var kvp in partsByPart)
+                {
+                    string part = kvp.Key;
+                    var rows = kvp.Value;
+                    int rowIdx = PartDirectionRowMap[part][d];
+                    if (rowIdx < 0 || rowIdx >= rows.Length) continue;
+                    dirSprites[part] = rows[rowIdx];
+                }
+
+                if (dirSprites.Count == 0) continue;
+
+                int minFrames = dirSprites.Min(kvp => kvp.Value.Count);
+
+                string clipName = $"lvl1_{targetState}_{Directions[d]}";
+                var clip = new AnimationClip();
+                clip.name = clipName;
+                clip.frameRate = 10;
+
+                foreach (var kvp in dirSprites)
+                {
+                    string path = PartToPath[kvp.Key];
+                    var sprites = kvp.Value.GetRange(0, minFrames);
+
+                    var binding = new EditorCurveBinding
+                    {
+                        type = typeof(SpriteRenderer),
+                        path = path,
+                        propertyName = "m_Sprite"
+                    };
+
+                    float frameTime = 1f / clip.frameRate;
+                    var keyframes = new ObjectReferenceKeyframe[sprites.Count];
+                    for (int i = 0; i < sprites.Count; i++)
+                    {
+                        keyframes[i] = new ObjectReferenceKeyframe
+                        {
+                            time = i * frameTime,
+                            value = sprites[i]
+                        };
+                    }
+
+                    AnimationUtility.SetObjectReferenceCurve(clip, binding, keyframes);
+                }
+
+                var settings = AnimationUtility.GetAnimationClipSettings(clip);
+                settings.loopTime = StatesWithLoop.Contains(targetState);
+                AnimationUtility.SetAnimationClipSettings(clip, settings);
+
+                string clipPath = $"{AnimOut}/{clipName}.anim";
+                AssetDatabase.CreateAsset(clip, clipPath);
+
+                if (!clipsByStateDir.ContainsKey(targetState))
+                    clipsByStateDir[targetState] = new Dictionary<string, AnimationClip>();
+                clipsByStateDir[targetState][Directions[d]] = clip;
+            }
+        }
+
+        return clipsByStateDir;
+    }
+
+    private static readonly HashSet<string> StatesWithLoop = new() { "Idle", "Walk", "Run" };
+
+    private static void CleanOldClips()
+    {
+        string fullOut = Path.Combine(Application.dataPath, AnimOut.Substring("Assets/".Length));
         if (Directory.Exists(fullOut))
         {
             foreach (var f in Directory.GetFiles(fullOut, "*.anim"))
@@ -28,246 +170,132 @@ public static class AnimationSetupTool
                 string rel = "Assets" + f.Substring(Application.dataPath.Length).Replace("\\", "/");
                 AssetDatabase.DeleteAsset(rel);
             }
-            AssetDatabase.Refresh();
         }
-
-        // Find all With_shadow PNGs
-        var pngFiles = new List<string>();
-        string fullRoot = Path.Combine(Application.dataPath, PngRoots.Substring("Assets/".Length));
-        foreach (var dir in Directory.GetDirectories(fullRoot))
-        {
-            string shadowDir = Path.Combine(dir, "With_shadow");
-            if (Directory.Exists(shadowDir))
-            {
-                foreach (var f in Directory.GetFiles(shadowDir, "*.png"))
-                {
-                    string rel = "Assets" + f.Substring(Application.dataPath.Length).Replace("\\", "/");
-                    pngFiles.Add(rel);
-                }
-            }
-        }
-
-        if (pngFiles.Count == 0)
-        {
-            EditorUtility.DisplayDialog("Error", $"No PNG files found in {PngRoots}/*/With_shadow/", "OK");
-            return;
-        }
-
-        // Step 1: Fix all sprite rects to 50x50 centered
-        foreach (var pngPath in pngFiles)
-        {
-            FixSpriteRectsTo50x50(pngPath);
-        }
+        AssetDatabase.DeleteAsset(ControllerPath);
         AssetDatabase.Refresh();
-
-        // Step 2: Create clips from all sprites, organized by level/state/direction
-        var allSavedPaths = new Dictionary<string, string>(); // png_path -> clip_path
-        int totalClips = 0;
-
-        foreach (var pngPath in pngFiles)
-        {
-            string name = Path.GetFileNameWithoutExtension(pngPath);
-            TryParsePngName(name, out string level, out string state);
-            if (string.IsNullOrEmpty(level) || string.IsNullOrEmpty(state)) continue;
-
-            var allAssets = AssetDatabase.LoadAllAssetsAtPath(pngPath);
-            var sprites = allAssets.OfType<Sprite>().ToArray();
-            if (sprites.Length == 0) continue;
-
-            // Sort by position (top-to-bottom, left-to-right)
-            var sorted = sprites
-                .OrderBy(s => -s.rect.y)  // higher y = visually higher row (top of image)
-                .ThenBy(s => s.rect.x)
-                .ToArray();
-
-            // Group into 4 rows by y-position (tolerance 20px)
-            var rows = new List<List<Sprite>>();
-            List<Sprite> currentRow = new List<Sprite> { sorted[0] };
-            float lastY = sorted[0].rect.y;
-            for (int i = 1; i < sorted.Length; i++)
-            {
-                if (Mathf.Abs(sorted[i].rect.y - lastY) > 20f)
-                {
-                    rows.Add(currentRow);
-                    currentRow = new List<Sprite> { sorted[i] };
-                    lastY = sorted[i].rect.y;
-                }
-                else
-                {
-                    currentRow.Add(sorted[i]);
-                }
-            }
-            rows.Add(currentRow);
-
-            // Sort rows by y descending (top row first)
-            rows = rows.OrderBy(r => -r[0].rect.y).ToList();
-
-            for (int d = 0; d < rows.Count && d < Directions.Length; d++)
-            {
-                string direction = Directions[d];
-                string clipName = $"{level}_{state}_{direction}";
-                var clip = CreateClip(rows[d], clipName);
-                if (clip == null) continue;
-
-                string clipPath = $"{AnimationOut}/{clipName}.anim";
-                AssetDatabase.CreateAsset(clip, clipPath);
-                allSavedPaths[clipPath] = clipPath;
-                totalClips++;
-            }
-        }
-
-        if (allSavedPaths.Count == 0)
-        {
-            EditorUtility.DisplayDialog("Error", "No clips could be created. Check Console for details.", "OK");
-            return;
-        }
-
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-
-        // Step 3: Load saved clips and organize by level
-        var clipsByLevel = new Dictionary<string, Dictionary<string, Dictionary<string, AnimationClip>>>();
-        foreach (var kvp in allSavedPaths)
-        {
-            string fileName = Path.GetFileNameWithoutExtension(kvp.Key);
-            TryParseClipName(fileName, out string level, out string state, out string direction);
-            if (string.IsNullOrEmpty(level)) continue;
-
-            var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(kvp.Value);
-            if (clip == null) continue;
-
-            if (!clipsByLevel.ContainsKey(level))
-                clipsByLevel[level] = new Dictionary<string, Dictionary<string, AnimationClip>>();
-            if (!clipsByLevel[level].ContainsKey(state))
-                clipsByLevel[level][state] = new Dictionary<string, AnimationClip>();
-            clipsByLevel[level][state][direction] = clip;
-        }
-
-        // Step 4: Build controller for Level 1
-        string levelToBuild = clipsByLevel.ContainsKey("lvl1") ? "lvl1" : clipsByLevel.Keys.First();
-        PopulateAnimatorController(clipsByLevel[levelToBuild]);
-
-        var player = GameObject.Find("Player");
-        if (player != null)
-        {
-            var animator = player.GetComponent<Animator>();
-            if (animator != null)
-                animator.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(ControllerPath);
-            EditorUtility.SetDirty(player);
-        }
-
-        EditorUtility.DisplayDialog("Done",
-            $"Player animation ready! {totalClips} clips, {clipsByLevel[levelToBuild].Count} states for {levelToBuild}.\n" +
-            "Press Play to test.", "OK");
     }
 
-    private static void FixSpriteRectsTo50x50(string pngPath)
+    private static List<string> FindPartPngs()
     {
-        var importer = AssetImporter.GetAtPath(pngPath) as TextureImporter;
-        if (importer == null || importer.spriteImportMode != SpriteImportMode.Multiple) return;
-
-        var rects = importer.spritesheet;
-        bool changed = false;
-
-        for (int i = 0; i < rects.Length; i++)
+        var files = new List<string>();
+        string fullDir = Path.Combine(Application.dataPath, "swordman/PNG/Swordsman_lvl1/Parts");
+        if (!Directory.Exists(fullDir)) return files;
+        foreach (var f in Directory.GetFiles(fullDir, "*.png"))
         {
-            var r = rects[i];
-            // Keep pivot as-is but expand to 50x50 centered
-            float cx = r.rect.center.x;
-            float cy = r.rect.center.y;
-            var newRect = new Rect(cx - 25, cy - 25, 50, 50);
-            r.rect = newRect;
-            rects[i] = r;
-            changed = true;
+            string rel = "Assets" + f.Substring(Application.dataPath.Length).Replace("\\", "/");
+            files.Add(rel);
         }
-
-        if (changed)
-        {
-            importer.spritesheet = rects;
-            importer.SaveAndReimport();
-        }
+        return files;
     }
 
-    private static AnimationClip CreateClip(List<Sprite> sprites, string clipName)
+    private static bool TryParsePartName(string name, out string level, out string state, out string part)
     {
-        if (sprites.Count == 0) return null;
-
-        var clip = new AnimationClip();
-        clip.name = clipName;
-        clip.frameRate = 10;
-
-        var binding = new EditorCurveBinding
-        {
-            type = typeof(SpriteRenderer),
-            path = "",
-            propertyName = "m_Sprite"
-        };
-
-        float frameTime = 1f / clip.frameRate;
-        var keyframes = new ObjectReferenceKeyframe[sprites.Count];
-        for (int i = 0; i < sprites.Count; i++)
-        {
-            keyframes[i] = new ObjectReferenceKeyframe
-            {
-                time = i * frameTime,
-                value = sprites[i]
-            };
-        }
-
-        AnimationUtility.SetObjectReferenceCurve(clip, binding, keyframes);
-
-        var settings = AnimationUtility.GetAnimationClipSettings(clip);
-        settings.loopTime = true;
-        AnimationUtility.SetAnimationClipSettings(clip, settings);
-
-        return clip;
-    }
-
-    private static void TryParsePngName(string name, out string level, out string state)
-    {
-        level = state = "";
-        // e.g. "Swordsman_lvl1_Idle_with_shadow"
-        name = name.Replace("_with_shadow", "").Replace("With_shadow", "");
+        level = state = part = "";
         var parts = name.Split('_');
         int lvlIdx = -1;
         for (int i = 0; i < parts.Length; i++)
         {
             if (parts[i].StartsWith("lvl")) { lvlIdx = i; break; }
         }
-        if (lvlIdx < 0 || lvlIdx + 1 >= parts.Length) return;
+        if (lvlIdx < 0 || lvlIdx + 2 >= parts.Length) return false;
         level = parts[lvlIdx];
-        state = string.Join("_", parts.Skip(lvlIdx + 1));
-    }
 
-    private static void TryParseClipName(string name, out string level, out string state, out string direction)
-    {
-        level = state = direction = "";
-        // e.g. "lvl1_Idle_front"
-        foreach (var d in Directions)
+        int stateEnd = name.Length;
+        string nameLower = name.ToLower();
+
+        foreach (var knownPart in PartToPath.Keys)
         {
-            if (name.EndsWith("_" + d))
+            string suffix = "_" + knownPart.ToLower();
+            if (nameLower.EndsWith(suffix))
             {
-                direction = d;
-                name = name.Substring(0, name.Length - d.Length - 1);
+                part = knownPart;
+                stateEnd = nameLower.Length - suffix.Length;
                 break;
             }
         }
-        if (string.IsNullOrEmpty(direction)) return;
 
-        var parts = name.Split('_');
-        int lvlIdx = -1;
-        for (int i = 0; i < parts.Length; i++)
-        {
-            if (parts[i].StartsWith("lvl")) { lvlIdx = i; break; }
-        }
-        if (lvlIdx < 0 || lvlIdx + 1 >= parts.Length) return;
-        level = parts[lvlIdx];
-        state = string.Join("_", parts.Skip(lvlIdx + 1));
+        if (string.IsNullOrEmpty(part)) return false;
+
+        string stateRaw = name.Substring(0, stateEnd);
+        var stateParts = stateRaw.Split('_');
+        state = string.Join("_", stateParts.Skip(lvlIdx + 1));
+
+        return !string.IsNullOrEmpty(state);
     }
 
-    private static void PopulateAnimatorController(Dictionary<string, Dictionary<string, AnimationClip>> stateClips)
+    private static List<Sprite>[] SplitIntoRows(Sprite[] sprites)
     {
-        AssetDatabase.DeleteAsset(ControllerPath);
+        var sorted = sprites
+            .OrderByDescending(s => s.rect.y)
+            .ThenBy(s => s.rect.x)
+            .ToArray();
+
+        var rows = new List<List<Sprite>>();
+        var currentRow = new List<Sprite> { sorted[0] };
+        float lastY = sorted[0].rect.y;
+
+        for (int i = 1; i < sorted.Length; i++)
+        {
+            if (Mathf.Abs(sorted[i].rect.y - lastY) > 20f)
+            {
+                rows.Add(currentRow);
+                currentRow = new List<Sprite> { sorted[i] };
+                lastY = sorted[i].rect.y;
+            }
+            else
+            {
+                currentRow.Add(sorted[i]);
+            }
+        }
+        rows.Add(currentRow);
+
+        return rows.Select(r => r.ToList()).ToArray();
+    }
+
+    private static void SetupPlayerHierarchy()
+    {
+        var player = GameObject.Find("Player");
+        if (player == null) return;
+
+        var animator = player.GetComponent<Animator>();
+        if (animator != null)
+            animator.runtimeAnimatorController = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(ControllerPath);
+
+        // Remove existing part children
+        var existing = new List<GameObject>();
+        foreach (Transform child in player.transform)
+            existing.Add(child.gameObject);
+        foreach (var go in existing)
+            Object.DestroyImmediate(go);
+
+        // Create children in correct sorting order
+        var parts = new (string name, int order)[]
+        {
+            ("Shadow", 0),
+            ("WeaponBack", 1),
+            ("Body", 2),
+            ("Head", 3),
+            ("WeaponFront", 4),
+            ("SwingEffect", 5),
+        };
+
+        foreach (var (name, order) in parts)
+        {
+            var child = new GameObject(name);
+            child.transform.SetParent(player.transform, false);
+            child.transform.localPosition = Vector3.zero;
+            child.transform.localRotation = Quaternion.identity;
+            child.transform.localScale = Vector3.one;
+
+            var sr = child.AddComponent<SpriteRenderer>();
+            sr.sortingOrder = order;
+        }
+
+        EditorUtility.SetDirty(player);
+    }
+
+    private static void BuildController(Dictionary<string, Dictionary<string, AnimationClip>> stateClips)
+    {
         var controller = AnimatorController.CreateAnimatorControllerAtPath(ControllerPath);
         controller.AddParameter("MoveX", AnimatorControllerParameterType.Float);
         controller.AddParameter("MoveY", AnimatorControllerParameterType.Float);
@@ -294,13 +322,6 @@ public static class AnimationSetupTool
         w2i.hasExitTime = false; w2i.duration = 0;
         w2i.AddCondition(AnimatorConditionMode.Less, 0.1f, "Speed");
 
-        // Attack
-        string attackName = stateClips.ContainsKey("Attack") ? "Attack" :
-            stateClips.ContainsKey("Run_Attack") ? "Run_Attack" :
-            stateClips.ContainsKey("Walk_Attack") ? "Walk_Attack" : null;
-        if (attackName != null) AddOneShotState(controller, sm, "Attack", stateClips, attackName, "Attacking", idleState);
-
-        // Run
         if (stateClips.ContainsKey("Run"))
         {
             var runState = sm.AddState("Run");
@@ -327,19 +348,22 @@ public static class AnimationSetupTool
             }
         }
 
+        if (stateClips.ContainsKey("Attack"))
+            AddOneShotState(controller, sm, "Attack", stateClips, "Attack", "Attacking", idleState, true);
+
         if (stateClips.ContainsKey("Hurt"))
-            AddOneShotState(controller, sm, "Hurt", stateClips, "Hurt", "Hurt", idleState);
+            AddOneShotState(controller, sm, "Hurt", stateClips, "Hurt", "Hurt", idleState, true);
 
         if (stateClips.ContainsKey("Death"))
-            AddOneShotState(controller, sm, "Death", stateClips, "Death", "Dead", idleState, hasExit: false);
+            AddOneShotState(controller, sm, "Death", stateClips, "Death", "Dead", idleState);
 
         EditorUtility.SetDirty(controller);
         AssetDatabase.SaveAssets();
     }
 
-    private static AnimatorState AddOneShotState(AnimatorController ctrl, AnimatorStateMachine sm,
+    private static void AddOneShotState(AnimatorController ctrl, AnimatorStateMachine sm,
         string stateName, Dictionary<string, Dictionary<string, AnimationClip>> stateClips,
-        string clipKey, string triggerParam, AnimatorState idleState, bool hasExit = true)
+        string clipKey, string triggerParam, AnimatorState idleState, bool hasExit = false)
     {
         var state = sm.AddState(stateName);
         var bt = CreateBlendTree(ctrl, stateName + "Blend", stateClips, clipKey);
@@ -356,8 +380,6 @@ public static class AnimationSetupTool
             var toIdle = state.AddTransition(idleState);
             toIdle.hasExitTime = true; toIdle.duration = 0; toIdle.exitTime = 1;
         }
-
-        return state;
     }
 
     private static BlendTree CreateBlendTree(AnimatorController ctrl,

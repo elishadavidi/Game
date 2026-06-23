@@ -50,6 +50,78 @@ TextureImporter:
   - first:
       213: 7565755486334209212
     second: Swordsman_lvl1_Idle_sword_back_15
+  - first:
+      213: -7003092716831271676
+    second: Swordsman_lvl1_Idle_sword_back_16
+  - first:
+      213: -919982422188991462
+    second: Swordsman_lvl1_Idle_sword_back_17
+  - first:
+      213: -8820446185540783382
+    second: Swordsman_lvl1_Idle_sword_back_18
+  - first:
+      213: 8848487033803414486
+    second: Swordsman_lvl1_Idle_sword_back_19
+  - first:
+      213: -3899826067688114364
+    second: Swordsman_lvl1_Idle_sword_back_20
+  - first:
+      213: -1443757524923477205
+    second: Swordsman_lvl1_Idle_sword_back_21
+  - first:
+      213: 6549245246247284597
+    second: Swordsman_lvl1_Idle_sword_back_22
+  - first:
+      213: -2176412536803209732
+    second: Swordsman_lvl1_Idle_sword_back_23
+  - first:
+      213: -6003890706185822398
+    second: Swordsman_lvl1_Idle_sword_back_24
+  - first:
+      213: -6171153315330754712
+    second: Swordsman_lvl1_Idle_sword_back_25
+  - first:
+      213: 2962482538203212218
+    second: Swordsman_lvl1_Idle_sword_back_26
+  - first:
+      213: -4421916087163550338
+    second: Swordsman_lvl1_Idle_sword_back_27
+  - first:
+      213: -4795414758696436198
+    second: Swordsman_lvl1_Idle_sword_back_28
+  - first:
+      213: 7417267653599966448
+    second: Swordsman_lvl1_Idle_sword_back_29
+  - first:
+      213: -4943563172538995725
+    second: Swordsman_lvl1_Idle_sword_back_30
+  - first:
+      213: -5867773033213648062
+    second: Swordsman_lvl1_Idle_sword_back_31
+  - first:
+      213: 7266335419388476673
+    second: Swordsman_lvl1_Idle_sword_back_32
+  - first:
+      213: -2802481916237717770
+    second: Swordsman_lvl1_Idle_sword_back_33
+  - first:
+      213: 5887664013770615885
+    second: Swordsman_lvl1_Idle_sword_back_34
+  - first:
+      213: 5193028311302893863
+    second: Swordsman_lvl1_Idle_sword_back_35
+  - first:
+      213: -8559829139169718553
+    second: Swordsman_lvl1_Idle_sword_back_36
+  - first:
+      213: -1463114757262744838
+    second: Swordsman_lvl1_Idle_sword_back_37
+  - first:
+      213: 7479617366939443623
+    second: Swordsman_lvl1_Idle_sword_back_38
+  - first:
+      213: -5729804387672185376
+    second: Swordsman_lvl1_Idle_sword_back_39
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -148,12 +220,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 149
-        width: 10
-        height: 8
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -170,12 +242,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 149
-        width: 10
-        height: 8
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,12 +264,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_2
       rect:
         serializedVersion: 2
-        x: 149
-        y: 149
-        width: 10
-        height: 8
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -214,12 +286,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_3
       rect:
         serializedVersion: 2
-        x: 213
-        y: 149
-        width: 10
-        height: 8
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,12 +308,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_4
       rect:
         serializedVersion: 2
-        x: 277
-        y: 149
-        width: 10
-        height: 8
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -258,12 +330,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_5
       rect:
         serializedVersion: 2
-        x: 342
-        y: 149
-        width: 10
-        height: 8
+        x: 320
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -280,12 +352,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_6
       rect:
         serializedVersion: 2
-        x: 406
-        y: 149
-        width: 10
-        height: 8
+        x: 384
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -302,12 +374,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_7
       rect:
         serializedVersion: 2
-        x: 470
-        y: 149
-        width: 10
-        height: 8
+        x: 448
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -324,12 +396,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_8
       rect:
         serializedVersion: 2
-        x: 534
-        y: 149
-        width: 10
-        height: 8
+        x: 512
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -346,12 +418,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_9
       rect:
         serializedVersion: 2
-        x: 598
-        y: 149
-        width: 10
-        height: 8
+        x: 576
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -368,12 +440,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_10
       rect:
         serializedVersion: 2
-        x: 662
-        y: 149
-        width: 10
-        height: 8
+        x: 640
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -390,12 +462,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_11
       rect:
         serializedVersion: 2
-        x: 726
-        y: 149
-        width: 10
-        height: 8
+        x: 704
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -412,12 +484,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_12
       rect:
         serializedVersion: 2
-        x: 35
-        y: 20
-        width: 10
-        height: 8
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -434,12 +506,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_13
       rect:
         serializedVersion: 2
-        x: 99
-        y: 19
-        width: 10
-        height: 8
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -456,12 +528,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_14
       rect:
         serializedVersion: 2
-        x: 163
-        y: 19
-        width: 10
-        height: 8
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -478,12 +550,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_sword_back_15
       rect:
         serializedVersion: 2
-        x: 227
-        y: 19
-        width: 10
-        height: 8
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -492,6 +564,534 @@ TextureImporter:
       bones: []
       spriteID: cbcc96c9786fef860800000000000000
       internalID: 7565755486334209212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 405952c274400de90800000000000000
+      internalID: -7003092716831271676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c52dd7cd09b33f0800000000000000
+      internalID: -919982422188991462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae2746e4dea779580800000000000000
+      internalID: -8820446185540783382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_19
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6db908173142cca70800000000000000
+      internalID: 8848487033803414486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44734a58ad801e9c0800000000000000
+      internalID: -3899826067688114364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_21
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2393213e2eb6fbe0800000000000000
+      internalID: -1443757524923477205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_22
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f2c712ad793ea50800000000000000
+      internalID: 6549245246247284597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_23
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfd43233454dbc1e0800000000000000
+      internalID: -2176412536803209732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24f56837635edaca0800000000000000
+      internalID: -6003890706185822398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8677c3181c8ab5aa0800000000000000
+      internalID: -6171153315330754712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab966ee2c2adc1920800000000000000
+      internalID: 2962482538203212218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_27
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e75080e3fb232a2c0800000000000000
+      internalID: -4421916087163550338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1ebb352fa3437db0800000000000000
+      internalID: -4795414758696436198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_29
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f432d0f1ad6fe660800000000000000
+      internalID: 7417267653599966448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_30
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb2c189c7fe46bb0800000000000000
+      internalID: -4943563172538995725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_31
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2432facd38b719ea0800000000000000
+      internalID: -5867773033213648062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10d3d73b09537d460800000000000000
+      internalID: 7266335419388476673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_33
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fed13d9b859b19d0800000000000000
+      internalID: -2802481916237717770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_34
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4ce5a1f93f25b150800000000000000
+      internalID: 5887664013770615885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_35
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72171cb3cb7511840800000000000000
+      internalID: 5193028311302893863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee40c5ffb0653980800000000000000
+      internalID: -8559829139169718553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af2e8b351e8f1bbe0800000000000000
+      internalID: -1463114757262744838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_38
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a1a444dd50fcc760800000000000000
+      internalID: 7479617366939443623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swordsman_lvl1_Idle_sword_back_39
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e523586445ab70b0800000000000000
+      internalID: -5729804387672185376
       vertices: []
       indices: 
       edges: []
@@ -518,8 +1118,32 @@ TextureImporter:
       Swordsman_lvl1_Idle_sword_back_13: -4459137789033036531
       Swordsman_lvl1_Idle_sword_back_14: -1437763193744625153
       Swordsman_lvl1_Idle_sword_back_15: 7565755486334209212
+      Swordsman_lvl1_Idle_sword_back_16: -7003092716831271676
+      Swordsman_lvl1_Idle_sword_back_17: -919982422188991462
+      Swordsman_lvl1_Idle_sword_back_18: -8820446185540783382
+      Swordsman_lvl1_Idle_sword_back_19: 8848487033803414486
       Swordsman_lvl1_Idle_sword_back_2: 8840859626086207072
+      Swordsman_lvl1_Idle_sword_back_20: -3899826067688114364
+      Swordsman_lvl1_Idle_sword_back_21: -1443757524923477205
+      Swordsman_lvl1_Idle_sword_back_22: 6549245246247284597
+      Swordsman_lvl1_Idle_sword_back_23: -2176412536803209732
+      Swordsman_lvl1_Idle_sword_back_24: -6003890706185822398
+      Swordsman_lvl1_Idle_sword_back_25: -6171153315330754712
+      Swordsman_lvl1_Idle_sword_back_26: 2962482538203212218
+      Swordsman_lvl1_Idle_sword_back_27: -4421916087163550338
+      Swordsman_lvl1_Idle_sword_back_28: -4795414758696436198
+      Swordsman_lvl1_Idle_sword_back_29: 7417267653599966448
       Swordsman_lvl1_Idle_sword_back_3: -6116021805253251159
+      Swordsman_lvl1_Idle_sword_back_30: -4943563172538995725
+      Swordsman_lvl1_Idle_sword_back_31: -5867773033213648062
+      Swordsman_lvl1_Idle_sword_back_32: 7266335419388476673
+      Swordsman_lvl1_Idle_sword_back_33: -2802481916237717770
+      Swordsman_lvl1_Idle_sword_back_34: 5887664013770615885
+      Swordsman_lvl1_Idle_sword_back_35: 5193028311302893863
+      Swordsman_lvl1_Idle_sword_back_36: -8559829139169718553
+      Swordsman_lvl1_Idle_sword_back_37: -1463114757262744838
+      Swordsman_lvl1_Idle_sword_back_38: 7479617366939443623
+      Swordsman_lvl1_Idle_sword_back_39: -5729804387672185376
       Swordsman_lvl1_Idle_sword_back_4: 5804154986431285937
       Swordsman_lvl1_Idle_sword_back_5: -1708866240962087498
       Swordsman_lvl1_Idle_sword_back_6: 7143015732215368234

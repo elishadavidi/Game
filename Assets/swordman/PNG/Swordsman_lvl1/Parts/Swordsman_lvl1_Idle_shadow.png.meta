@@ -220,12 +220,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 208
-        width: 17
-        height: 9
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -242,12 +242,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 208
-        width: 17
-        height: 9
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -264,12 +264,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 208
-        width: 17
-        height: 9
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -286,12 +286,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_3
       rect:
         serializedVersion: 2
-        x: 215
-        y: 208
-        width: 17
-        height: 9
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -308,12 +308,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_4
       rect:
         serializedVersion: 2
-        x: 279
-        y: 208
-        width: 17
-        height: 9
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_5
       rect:
         serializedVersion: 2
-        x: 343
-        y: 208
-        width: 17
-        height: 9
+        x: 320
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -352,12 +352,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_6
       rect:
         serializedVersion: 2
-        x: 407
-        y: 208
-        width: 17
-        height: 9
+        x: 384
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -374,12 +374,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_7
       rect:
         serializedVersion: 2
-        x: 471
-        y: 208
-        width: 17
-        height: 9
+        x: 448
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -396,12 +396,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_8
       rect:
         serializedVersion: 2
-        x: 535
-        y: 208
-        width: 17
-        height: 9
+        x: 512
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -418,12 +418,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_9
       rect:
         serializedVersion: 2
-        x: 599
-        y: 208
-        width: 17
-        height: 9
+        x: 576
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -440,12 +440,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_10
       rect:
         serializedVersion: 2
-        x: 663
-        y: 208
-        width: 17
-        height: 9
+        x: 640
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -462,12 +462,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_11
       rect:
         serializedVersion: 2
-        x: 727
-        y: 208
-        width: 17
-        height: 9
+        x: 704
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -484,12 +484,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_12
       rect:
         serializedVersion: 2
-        x: 23
-        y: 144
-        width: 17
-        height: 9
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -506,12 +506,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_13
       rect:
         serializedVersion: 2
-        x: 87
-        y: 144
-        width: 17
-        height: 9
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -528,12 +528,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_14
       rect:
         serializedVersion: 2
-        x: 151
-        y: 144
-        width: 17
-        height: 9
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -550,12 +550,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_15
       rect:
         serializedVersion: 2
-        x: 215
-        y: 144
-        width: 17
-        height: 9
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -572,12 +572,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_16
       rect:
         serializedVersion: 2
-        x: 279
-        y: 144
-        width: 17
-        height: 9
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -594,12 +594,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_17
       rect:
         serializedVersion: 2
-        x: 343
-        y: 144
-        width: 17
-        height: 9
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -616,12 +616,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_18
       rect:
         serializedVersion: 2
-        x: 407
-        y: 144
-        width: 17
-        height: 9
+        x: 384
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -638,12 +638,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_19
       rect:
         serializedVersion: 2
-        x: 471
-        y: 144
-        width: 17
-        height: 9
+        x: 448
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -660,12 +660,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_20
       rect:
         serializedVersion: 2
-        x: 535
-        y: 144
-        width: 17
-        height: 9
+        x: 512
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -682,12 +682,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_21
       rect:
         serializedVersion: 2
-        x: 599
-        y: 144
-        width: 17
-        height: 9
+        x: 576
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -704,12 +704,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_22
       rect:
         serializedVersion: 2
-        x: 663
-        y: 144
-        width: 17
-        height: 9
+        x: 640
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -726,12 +726,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_23
       rect:
         serializedVersion: 2
-        x: 727
-        y: 144
-        width: 17
-        height: 9
+        x: 704
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -748,12 +748,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_24
       rect:
         serializedVersion: 2
-        x: 23
-        y: 80
-        width: 17
-        height: 9
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -770,12 +770,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_25
       rect:
         serializedVersion: 2
-        x: 87
-        y: 80
-        width: 17
-        height: 9
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -792,12 +792,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_26
       rect:
         serializedVersion: 2
-        x: 151
-        y: 80
-        width: 17
-        height: 9
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -814,12 +814,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_27
       rect:
         serializedVersion: 2
-        x: 215
-        y: 80
-        width: 17
-        height: 9
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -836,12 +836,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_28
       rect:
         serializedVersion: 2
-        x: 279
-        y: 80
-        width: 17
-        height: 9
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -858,12 +858,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_29
       rect:
         serializedVersion: 2
-        x: 343
-        y: 80
-        width: 17
-        height: 9
+        x: 320
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -880,12 +880,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_30
       rect:
         serializedVersion: 2
-        x: 407
-        y: 80
-        width: 17
-        height: 9
+        x: 384
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -902,12 +902,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_31
       rect:
         serializedVersion: 2
-        x: 471
-        y: 80
-        width: 17
-        height: 9
+        x: 448
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -924,12 +924,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_32
       rect:
         serializedVersion: 2
-        x: 535
-        y: 80
-        width: 17
-        height: 9
+        x: 512
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -946,12 +946,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_33
       rect:
         serializedVersion: 2
-        x: 599
-        y: 80
-        width: 17
-        height: 9
+        x: 576
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -968,12 +968,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_34
       rect:
         serializedVersion: 2
-        x: 663
-        y: 80
-        width: 17
-        height: 9
+        x: 640
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -990,12 +990,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_35
       rect:
         serializedVersion: 2
-        x: 727
-        y: 80
-        width: 17
-        height: 9
+        x: 704
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1012,12 +1012,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_36
       rect:
         serializedVersion: 2
-        x: 23
-        y: 16
-        width: 17
-        height: 9
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1034,12 +1034,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_37
       rect:
         serializedVersion: 2
-        x: 87
-        y: 16
-        width: 17
-        height: 9
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1056,12 +1056,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_38
       rect:
         serializedVersion: 2
-        x: 151
-        y: 16
-        width: 17
-        height: 9
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1078,12 +1078,12 @@ TextureImporter:
       name: Swordsman_lvl1_Idle_shadow_39
       rect:
         serializedVersion: 2
-        x: 215
-        y: 16
-        width: 17
-        height: 9
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

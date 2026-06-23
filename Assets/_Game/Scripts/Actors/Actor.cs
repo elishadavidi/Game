@@ -1,5 +1,7 @@
 using BecomingLegend;
 using BecomingLegend.Combat;
+using BecomingLegend.Core;
+using BecomingLegend.Events;
 using BecomingLegend.Stats;
 using UnityEngine;
 
@@ -8,7 +10,7 @@ namespace BecomingLegend.Actors
     [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
     public abstract class Actor : MonoBehaviour, IDamageable
     {
-        [SerializeField] private string actorName = "Actor";
+        [SerializeField] protected string actorName = "Actor";
         [SerializeField] private ActorTeam team = ActorTeam.Neutral;
         [SerializeField] private StatSheet stats = new();
         [SerializeField] protected float health;
@@ -18,9 +20,11 @@ namespace BecomingLegend.Actors
         private float lastMaxHealth;
         private float lastMaxMP;
         private float lastMaxStamina;
+        private Coroutine flashRoutine;
 
         protected SpriteRenderer SpriteRenderer { get; private set; }
         protected Animator Animator { get; private set; }
+        protected Color OriginalColor { get; set; } = Color.white;
 
         public string ActorName => actorName;
         public ActorTeam Team => team;
@@ -48,6 +52,8 @@ namespace BecomingLegend.Actors
         {
             SpriteRenderer = GetComponent<SpriteRenderer>();
             Animator = GetComponent<Animator>();
+            if (SpriteRenderer != null)
+                OriginalColor = SpriteRenderer.color;
             if (!stats.HasEntries)
             {
                 stats.SetEntry(StatType.Strength, 5f);
@@ -75,7 +81,28 @@ namespace BecomingLegend.Actors
         {
             if (IsDead) return;
             health = Mathf.Max(0, health - damage.Amount);
+            OnHit();
+            EventBus.Publish(new DamageDealtEvent(damage));
             if (IsDead) Die();
+        }
+
+        protected virtual void OnHit()
+        {
+            TriggerHitFlash();
+        }
+
+        protected void TriggerHitFlash(float duration = 0.1f)
+        {
+            if (SpriteRenderer == null) return;
+            if (flashRoutine != null) StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(FlashRoutine(duration));
+        }
+
+        private System.Collections.IEnumerator FlashRoutine(float duration)
+        {
+            SpriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(duration);
+            SpriteRenderer.color = OriginalColor;
         }
 
         public void RecalculateVitals()
@@ -102,7 +129,7 @@ namespace BecomingLegend.Actors
 
         public virtual void Die()
         {
-            gameObject.SetActive(false);
+            EventBus.Publish(new EntityDiedEvent(this));
         }
 
         public virtual void Heal(float amount)

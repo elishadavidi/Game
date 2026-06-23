@@ -39,7 +39,7 @@ namespace BecomingLegend.Controllers
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) h = 1f;
 
             if (Input.GetKeyDown(KeyCode.Z))
-                player.Attack();
+                player.Attack(lastDirection);
 
             if (pressedW) HandleDirPress(KeyCode.W);
             else if (pressedS) HandleDirPress(KeyCode.S);
@@ -62,8 +62,7 @@ namespace BecomingLegend.Controllers
         private void FixedUpdate()
         {
             float currentSpeed = player.MoveSpeed * (isRunning ? runMultiplier : 1f);
-            Vector2 targetPos = rb.position + inputBuffer * currentSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(targetPos);
+            rb.linearVelocity = inputBuffer * currentSpeed;
         }
 
         private void HandleDirPress(KeyCode key)
